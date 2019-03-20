@@ -1,0 +1,1 @@
+require('./dist/public/server.min.js');
