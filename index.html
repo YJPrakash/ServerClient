@@ -1,2 +1,78 @@
-<div id="root"></div>
-<script type="module"  src="./dist/public/app.min.js"></script>
+<div id="root">
+    <div class="container"></div>
+    <div class="container"></div>
+    <div class="container">
+</div>
+</div>
+<iframe style="display:none;" id="empData" src="/read?file_name=emp"></iframe>
+<iframe style="display:none;" id="depData" src="/read?file_name=dep"></iframe>
+<iframe style="display:none;" id="assignData" src="/read?file_name=assign"></iframe>
+<iframe style="display:none;" id="postData" src=""></iframe>
+<template id="addEmpForm">
+    <form id="addEmpForm" method="get" action="/update">
+        <div>
+            <h1> Employee's Details</h1>
+        </div>
+        <div>
+            <label>Name : <input name="ename" type="text" /></label>
+        </div>
+        <div>
+            <label>Father Name : <input name="fname" type="text" /></label>
+        </div>
+        <div>
+            <label>Age : <input name="age" type="text" /></label>
+        </div>
+        <div>
+            <label>City : <input name="city" type="text" /></label>
+        </div>
+        <div>
+            <label>State : <input name="state" type="text" /></label>
+        </div>
+        <div>
+            <label>Country : <input name="cntry" type="text" /></label>
+        </div>
+        <div>
+            <input type="hidden" name="id" value="" />
+            <input type="hidden" name="file_name" value="emp" />
+            <input type="submit" value="Add" />
+        </div>
+    </form>
+</template>
+<template id="addDepForm">
+    <form id="addDepForm" method="get" action="/update">
+        <div>
+            <h1> Department Details</h1>
+        </div>
+        <div>
+            <label>Name : <input name="dname" type="text" /></label>
+        </div>
+        <div>
+            <input type="hidden" name="id" value="" />
+            <input type="hidden" name="file_name" value="dep" />
+            <input type="submit" value="Add" />
+        </div>
+    </form>
+</template>
+<template id="assignForm">
+    <form id="assignForm" method="get" action="/update">
+        <div>
+            <h1> Working Details</h1>
+        </div>
+        <div>
+            <label>Select Employee : <select name="ename"></select></label>
+        </div>
+        <div>
+            <label>Select Department : <select name="dname"></select></label>
+        </div>
+        <div>
+            <label>Start Date : <input name="stdate" type="date" /></label>
+        </div>
+        <div>
+            <label>End Date : <input name="enddate" type="date" /></label>
+        </div>
+        <div>
+            <input type="hidden" name="file_name" value="assign" />
+            <input type="submit" value="Assign" />
+        </div>
+    </form>
+</template>
