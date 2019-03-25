@@ -14,7 +14,7 @@ function main() {
     let content = this.contentWindow.document.querySelector("pre");
     let dbSource = (content == null) ? "[]" : content.textContent;
     dbSource = JSON.parse(dbSource);
-    console.log(dbSource);
+    // console.log(dbSource);
     if (this.id.indexOf("emp") != -1) {
         initEmp(dbSource);
     } else if (this.id.indexOf("dep") != -1) {
@@ -38,7 +38,7 @@ function formSubmit(e) {
             return key + "=" + params[key];
         }).join("&");
     }
-    
+
     let _gntrd_id = 0;
     if (form_id.indexOf("Emp") != -1 || form_id.indexOf("Dep") != -1) {
         if (form_id.indexOf("Emp") != -1) {
@@ -46,7 +46,7 @@ function formSubmit(e) {
         } else {
             _gntrd_id = Number(depData[depData.length - 1].id);
         }
-        _gntrd_id+=1;
+        _gntrd_id += 1;
     }
     this_form_fields = this.querySelectorAll('input[name],select');
     this_form_fields.forEach(function (field) {
@@ -60,9 +60,14 @@ function formSubmit(e) {
     postFrame.onload = function () {
         let content = this.contentWindow.document.querySelector("body");
         let data = (content != null) ? "[]" : content.innerHTML;
-        console.log(data);
-        empFrame.contentWindow.location.reload();
-        depFrame.contentWindow.location.reload();
+        // console.log(data);
+        if (form_id.indexOf("Emp") != -1 || form_id.indexOf("Dep") != -1) {
+            if (form_id.indexOf("Emp") != -1) {
+                empFrame.contentWindow.location.reload();
+            } else {
+                depFrame.contentWindow.location.reload();
+            }
+        }
         assignFrame.contentWindow.location.reload();
     };
 }
@@ -161,10 +166,10 @@ function initAssign(dbs) {
         });
     }
 
-    function resetOptions(select){
+    function resetOptions(select) {
         select.innerHTML = "";
     }
-    
+
     resetOptions(enameSelect);
     resetOptions(dnameSelect);
     createOption(enameData, enameSelect);
